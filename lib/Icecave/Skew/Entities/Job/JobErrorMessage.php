@@ -1,7 +1,7 @@
 <?php
 namespace Icecave\Skew\Entities\Job;
 
-class JobErrorMessage extends AbstractJobMessageWithWorker
+class JobErrorMessage extends AbstractJobMessageFromProcessor
 {
     use ReasonTrait;
 
@@ -9,6 +9,11 @@ class JobErrorMessage extends AbstractJobMessageWithWorker
     {
         $this->setReason($reason);
         $this->setReschedule($reschedule);
+    }
+
+    public function type()
+    {
+        return 'job.error';
     }
 
     public function reschedule()
@@ -19,6 +24,11 @@ class JobErrorMessage extends AbstractJobMessageWithWorker
     public function setReschedule($reschedule)
     {
         $this->reschedule = $reschedule;
+    }
+
+    public abstract function accept(VisitorInterface $visitor)
+    {
+        return $visitor->visitJobErrorMessage($this);
     }
 
     private $reschedule;

@@ -1,9 +1,9 @@
 <?php
 namespace Icecave\Skew\Entities\Job;
 
-use Icecave\Skew\Entities\AbstractMessage;
+use Icecave\Skew\Entities\MessageInterface;
 
-class AbstractJobMessage extends AbstractMessage
+class AbstractJobMessage implements MessageInterface
 {
     public function job()
     {
