@@ -1,0 +1,25 @@
+{
+    "name": "icecave/skew-entities",
+    "description": "Skew data entities.",
+    "homepage": "https://github.com/IcecaveStudios/skew-entities",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Harris",
+            "email": "james.harris@icecave.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "eloquent/typhoon": "~0.9",
+        "icecave/archer": "~0.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Icecave\\Skew\\Entities": "lib",
+            "Icecave\\Skew\\Entities\\TypeCheck": "lib-typhoon"
+        }
+    }
+}
