@@ -1,15 +1,15 @@
 <?php
 namespace Icecave\Skew\Entities\Messages\Job;
 
-use Icecave\Skew\Entities\JobDetailsInterface;
-use Icecave\Skew\Entities\JobDetailsTrait;
+use Icecave\Skew\Entities\TaskDetailsInterface;
+use Icecave\Skew\Entities\TaskDetailsTrait;
 use Icecave\Skew\Entities\Messages\ClientMessageInterface;
 use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
-class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface, JobDetailsInterface
+class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface, TaskDetailsInterface
 {
-    use JobDetailsTrait;
+    use TaskDetailsTrait;
 
     /**
      * @param string $jobId The job ID.

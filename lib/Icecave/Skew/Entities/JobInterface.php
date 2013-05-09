@@ -1,10 +1,15 @@
 <?php
 namespace Icecave\Skew\Entities;
 
-interface JobInterface extends JobDetailsInterface
+interface JobInterface
 {
     /**
      * @return string
      */
     public function id();
+
+    /**
+     * @return TaskDetailsInterface
+     */
+    public function taskDetails();
 }

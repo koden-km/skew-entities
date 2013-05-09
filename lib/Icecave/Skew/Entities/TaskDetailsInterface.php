@@ -3,7 +3,7 @@ namespace Icecave\Skew\Entities;
 
 use Icecave\Collections\Set;
 
-interface JobDetailsInterface
+interface TaskDetailsInterface
 {
     /**
      * @return string

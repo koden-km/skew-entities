@@ -39,7 +39,7 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     * @covers Icecave\Skew\Entities\TaskDetailsTrait
      */
     public function testSetTask()
     {
@@ -49,7 +49,7 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     * @covers Icecave\Skew\Entities\TaskDetailsTrait
      */
     public function testSetTags()
     {
@@ -59,7 +59,7 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     * @covers Icecave\Skew\Entities\TaskDetailsTrait
      */
     public function testSetPaylaod()
     {

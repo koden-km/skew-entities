@@ -10,7 +10,8 @@ class JobTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->job = new Job('123', 'skew.test');
+        $this->taskDetails = new TaskDetails('abc');
+        $this->job = new Job('123', $this->taskDetails);
     }
 
     public function testFromRequest()
@@ -25,9 +26,9 @@ class JobTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(__NAMESPACE__ . '\Job', $job);
         $this->assertSame('123', $job->id());
-        $this->assertSame('skew.test', $job->task());
-        $this->assertEquals(new Set(['tag1', 'tag2']), $job->tags());
-        $this->assertSame($payload, $job->payload());
+        $this->assertSame('skew.test', $job->taskDetails()->task());
+        $this->assertEquals(new Set(['tag1', 'tag2']), $job->taskDetails()->tags());
+        $this->assertSame($payload, $job->taskDetails()->payload());
     }
 
     public function testSetId()
@@ -37,34 +38,11 @@ class JobTest extends PHPUnit_Framework_TestCase
         $this->assertSame('456', $this->job->id());
     }
 
-    /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
-     */
-    public function testSetTask()
+    public function testSetTaskDetails()
     {
-        $this->assertSame('skew.test', $this->job->task());
-        $this->job->setTask('skew.other');
-        $this->assertSame('skew.other', $this->job->task());
-    }
-
-    /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
-     */
-    public function testSetTags()
-    {
-        $this->assertEquals(new Set, $this->job->tags());
-        $this->job->setTags(['tag1', 'tag2']);
-        $this->assertEquals(new Set(['tag1', 'tag2']), $this->job->tags());
-    }
-
-    /**
-     * @covers Icecave\Skew\Entities\JobDetailsTrait
-     */
-    public function testSetPayload()
-    {
-        $payload = new stdClass;
-        $this->assertNull($this->job->payload());
-        $this->job->setPayload($payload);
-        $this->assertSame($payload, $this->job->payload());
+        $taskDetails = new TaskDetails('def');
+        $this->assertSame($this->taskDetails, $this->job->taskDetails());
+        $this->job->setTaskDetails($taskDetails);
+        $this->assertSame($taskDetails, $this->job->taskDetails());
     }
 }

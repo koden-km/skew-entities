@@ -6,18 +6,16 @@ use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
 class Job implements JobInterface
 {
-    use JobDetailsTrait;
-
     /**
-     * @param string $id   The job ID.
-     * @param string $task The task name to execute.
+     * @param string               $id          The job ID.
+     * @param TaskDetailsInterface $taskDetails
      */
-    public function __construct($id, $task)
+    public function __construct($id, TaskDetailsInterface $taskDetails)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
         $this->setId($id);
-        $this->setTask($task);
+        $this->setTaskDetails($taskDetails);
     }
 
     /**
@@ -29,11 +27,10 @@ class Job implements JobInterface
     {
         TypeCheck::get(__CLASS__)->fromRequest(func_get_args());
 
-        $job = new static($request->jobId(), $request->task());
-        $job->setPayload($request->payload());
-        $job->setTags($request->tags());
-
-        return $job;
+        return new static(
+            $request->jobId(),
+            TaskDetails::fromRequest($request)
+        );
     }
 
     /**
@@ -56,6 +53,27 @@ class Job implements JobInterface
         $this->id = $id;
     }
 
+    /**
+     * @return TaskDetailsInterface
+     */
+    public function taskDetails()
+    {
+        $this->typeCheck->taskDetails(func_get_args());
+
+        return $this->taskDetails;
+    }
+
+    /**
+     * @param TaskDetailsInterface $taskDetails
+     */
+    public function setTaskDetails(TaskDetailsInterface $taskDetails)
+    {
+        $this->typeCheck->setTaskDetails(func_get_args());
+
+        $this->taskDetails = $taskDetails;
+    }
+
     private $typeCheck;
     private $id;
+    private $taskDetails;
 }

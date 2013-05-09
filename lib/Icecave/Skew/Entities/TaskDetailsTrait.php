@@ -3,7 +3,7 @@ namespace Icecave\Skew\Entities;
 
 use Icecave\Collections\Set;
 
-trait JobDetailsTrait
+trait TaskDetailsTrait
 {
     /**
      * @return string The task name to execute.
