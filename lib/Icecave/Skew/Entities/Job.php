@@ -29,7 +29,7 @@ class Job implements JobInterface
     {
         TypeCheck::get(__CLASS__)->fromRequest(func_get_args());
 
-        $job = new static($request->job(), $request->task());
+        $job = new static($request->jobId(), $request->task());
         $job->setPayload($request->payload());
         $job->setTags($request->tags());
 

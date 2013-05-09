@@ -33,9 +33,9 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
      */
     public function testSetJob()
     {
-        $this->assertSame('123', $this->message->job());
-        $this->message->setJob('abc');
-        $this->assertSame('abc', $this->message->job());
+        $this->assertSame('123', $this->message->jobId());
+        $this->message->setJobId('abc');
+        $this->assertSame('abc', $this->message->jobId());
     }
 
     /**

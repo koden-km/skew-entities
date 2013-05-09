@@ -10,25 +10,25 @@ class AbstractJobMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstr
         }
     }
 
-    public function job(array $arguments)
+    public function jobId(array $arguments)
     {
         if (\count($arguments) > 0) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
         }
     }
 
-    public function setJob(array $arguments)
+    public function setJobId(array $arguments)
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('job', 0, 'string');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('jobId', 0, 'string');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
         $value = $arguments[0];
         if (!\is_string($value)) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'job',
+                'jobId',
                 0,
                 $arguments[0],
                 'string'

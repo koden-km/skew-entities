@@ -29,10 +29,10 @@ class JobErrorMessageTest extends PHPUnit_Framework_TestCase
     /**
      * @covers Icecave\Skew\Entities\Messages\Job\AbstractJobMessage
      */
-    public function testSetJob()
+    public function testSetJobId()
     {
-        $this->message->setJob('abc');
-        $this->assertSame('abc', $this->message->job());
+        $this->message->setJobId('abc');
+        $this->assertSame('abc', $this->message->jobId());
     }
 
     /**

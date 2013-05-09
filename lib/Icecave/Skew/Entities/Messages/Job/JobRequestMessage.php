@@ -12,16 +12,16 @@ class JobRequestMessage extends AbstractJobMessage implements ClientMessageInter
     use JobDetailsTrait;
 
     /**
-     * @param string $job  The job ID.
-     * @param string $task The task name to execute.
+     * @param string $jobId The job ID.
+     * @param string $task  The task name to execute.
      */
-    public function __construct($job, $task)
+    public function __construct($jobId, $task)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
         parent::__construct();
 
-        $this->setJob($job);
+        $this->setJobId($jobId);
         $this->setTask($task);
     }
 

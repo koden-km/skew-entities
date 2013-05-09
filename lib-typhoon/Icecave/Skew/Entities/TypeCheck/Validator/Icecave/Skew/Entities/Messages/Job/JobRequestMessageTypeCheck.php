@@ -8,7 +8,7 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
         $argumentCount = \count($arguments);
         if ($argumentCount < 2) {
             if ($argumentCount < 1) {
-                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('job', 0, 'string');
+                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('jobId', 0, 'string');
             }
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('task', 1, 'string');
         } elseif ($argumentCount > 2) {
@@ -17,7 +17,7 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
         $value = $arguments[0];
         if (!\is_string($value)) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'job',
+                'jobId',
                 0,
                 $arguments[0],
                 'string'
@@ -38,86 +38,6 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
     {
         if (\count($arguments) > 0) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function task(array $arguments)
-    {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function setTask(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('task', 0, 'string');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
-        }
-        $value = $arguments[0];
-        if (!\is_string($value)) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'task',
-                0,
-                $arguments[0],
-                'string'
-            );
-        }
-    }
-
-    public function tags(array $arguments)
-    {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function setTags(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('tags', 0, 'mixed<string>');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
-        }
-        $value = $arguments[0];
-        $check = function ($value) {
-            if (!\is_array($value) && !$value instanceof \Traversable) {
-                return false;
-            }
-            foreach ($value as $key => $subValue) {
-                if (!\is_string($subValue)) {
-                    return false;
-                }
-            }
-            return true;
-        };
-        if (!$check($arguments[0])) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'tags',
-                0,
-                $arguments[0],
-                'mixed<string>'
-            );
-        }
-    }
-
-    public function payload(array $arguments)
-    {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function setPayload(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('payload', 0, 'mixed');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
     }
 

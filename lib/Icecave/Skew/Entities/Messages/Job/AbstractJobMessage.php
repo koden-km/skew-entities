@@ -14,23 +14,23 @@ abstract class AbstractJobMessage implements MessageInterface
     /**
      * @return string The job ID.
      */
-    public function job()
+    public function jobId()
     {
-        $this->typeCheck->job(func_get_args());
+        $this->typeCheck->jobId(func_get_args());
 
-        return $this->job;
+        return $this->jobId;
     }
 
     /**
-     * @param string $job The job ID.
+     * @param string $jobId The job ID.
      */
-    public function setJob($job)
+    public function setJobId($jobId)
     {
-        $this->typeCheck->setJob(func_get_args());
+        $this->typeCheck->setJobId(func_get_args());
 
-        $this->job = $job;
+        $this->jobId = $jobId;
     }
 
     private $typeCheck;
-    private $job;
+    private $jobId;
 }
