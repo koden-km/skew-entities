@@ -1,6 +1,8 @@
 <?php
 namespace Icecave\Skew\Entities\Job;
 
+use Icecave\Skew\Entities\VisitorInterface;
+
 class JobAcceptMessage extends AbstractJobMessageFromProcessor
 {
     public function type()
@@ -8,7 +10,7 @@ class JobAcceptMessage extends AbstractJobMessageFromProcessor
         return 'job.accept';
     }
 
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitJobAcceptMessage($this);
     }

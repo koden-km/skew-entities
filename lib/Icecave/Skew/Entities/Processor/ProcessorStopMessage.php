@@ -1,30 +1,18 @@
 <?php
 namespace Icecave\Skew\Entities\Processor;
 
-use Icecave\Collections\Set;
+use Icecave\Skew\Entities\DaemonToProcessorMessageInterface;
+use Icecave\Skew\Entities\VisitorInterface;
 
-class ProcessorStartMessage extends AbstractProcessorMessage implements DaemonToProcessorMessageInterface
+class ProcessorStopMessage extends AbstractProcessorMessage implements DaemonToProcessorMessageInterface
 {
     public function type()
     {
-        return 'Processor.stop';
+        return 'processor.stop';
     }
 
-    public function capabilities()
-    {
-        return $this->capabilities;
-    }
-
-    public function setCapabilities($capabilities)
-    {
-        $this->capabilities->clear();
-        $this->capabilities->unionInPlace($capabilities);
-    }
-
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitProcessorStopMessage($this);
     }
-
-    private $capabilities = new Set;
 }

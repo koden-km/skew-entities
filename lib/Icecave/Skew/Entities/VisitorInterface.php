@@ -1,5 +1,5 @@
 <?php
-namespace Icecave\Skew\Entities\VisitorInterface;
+namespace Icecave\Skew\Entities;
 
 interface VisitorInterface
 {

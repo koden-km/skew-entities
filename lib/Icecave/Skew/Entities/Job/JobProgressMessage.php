@@ -1,7 +1,9 @@
 <?php
 namespace Icecave\Skew\Entities\Job;
 
-class JobErrorMessage extends AbstractJobMessageFromProcessor
+use Icecave\Skew\Entities\VisitorInterface;
+
+class JobProgressMessage extends AbstractJobMessageFromProcessor
 {
     public function __construct($progress = 0.0)
     {
@@ -23,7 +25,7 @@ class JobErrorMessage extends AbstractJobMessageFromProcessor
         $this->progress = $progress;
     }
 
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitJobProgressMessage($this);
     }

@@ -2,9 +2,20 @@
 namespace Icecave\Skew\Entities\Job;
 
 use Icecave\Collections\Set;
+use Icecave\Skew\Entities\ClientMessageInterface;
+use Icecave\Skew\Entities\VisitorInterface;
 
 class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface
 {
+    public function __construct($task)
+    {
+        $this->setTask($task);
+
+        $this->tags = new Set;
+
+        parent::__construct();
+    }
+
     public function type()
     {
         return 'job.request';
@@ -41,12 +52,12 @@ class JobRequestMessage extends AbstractJobMessage implements ClientMessageInter
         $this->payload = $payload;
     }
 
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitJobRequestMessage($this);
     }
 
     private $task;
-    private $tags = new Set;
+    private $tags;
     private $payload;
 }

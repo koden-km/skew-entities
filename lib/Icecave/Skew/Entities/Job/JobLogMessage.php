@@ -1,7 +1,9 @@
 <?php
 namespace Icecave\Skew\Entities\Job;
 
-class JobErrorMessage extends AbstractJobMessageFromProcessor
+use Icecave\Skew\Entities\VisitorInterface;
+
+class JobLogMessage extends AbstractJobMessageFromProcessor
 {
     public function __construct(LogLevel $level, $message)
     {
@@ -19,7 +21,7 @@ class JobErrorMessage extends AbstractJobMessageFromProcessor
         return $this->level;
     }
 
-    public function setLevel(Level $level)
+    public function setLevel(LogLevel $level)
     {
         $this->level = $level;
     }
@@ -34,7 +36,7 @@ class JobErrorMessage extends AbstractJobMessageFromProcessor
         $this->message = $message;
     }
 
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitJobLogMessage($this);
     }

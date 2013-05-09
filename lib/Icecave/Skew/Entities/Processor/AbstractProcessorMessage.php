@@ -1,9 +1,9 @@
 <?php
 namespace Icecave\Skew\Entities\Processor;
 
-use Icecave\Skew\Entities\MessageInterface;
+use Icecave\Skew\Entities\DaemonToClientMessageInterface;
 
-class AbstractProcessorMessage implements DaemonToClientMessageInterface
+abstract class AbstractProcessorMessage implements DaemonToClientMessageInterface
 {
     use ProcessorTrait;
 }

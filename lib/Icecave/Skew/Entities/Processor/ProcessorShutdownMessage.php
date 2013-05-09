@@ -1,14 +1,17 @@
 <?php
 namespace Icecave\Skew\Entities\Processor;
 
+use Icecave\Skew\Entities\ProcessorMessageInterface;
+use Icecave\Skew\Entities\VisitorInterface;
+
 class ProcessorShutdownMessage extends AbstractProcessorMessage implements ProcessorMessageInterface
 {
     public function type()
     {
-        return 'Processor.shutdown';
+        return 'processor.shutdown';
     }
 
-    public abstract function accept(VisitorInterface $visitor)
+    public function accept(VisitorInterface $visitor)
     {
         return $visitor->visitProcessorShutdownMessage($this);
     }
