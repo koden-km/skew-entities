@@ -38,6 +38,9 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
         $this->assertSame('abc', $this->message->job());
     }
 
+    /**
+     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     */
     public function testSetTask()
     {
         $this->assertSame('skew.test', $this->message->task());
@@ -45,6 +48,9 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
         $this->assertSame('skew.other', $this->message->task());
     }
 
+    /**
+     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     */
     public function testSetTags()
     {
         $this->assertEquals(new Set, $this->message->tags());
@@ -52,6 +58,9 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(new Set(['tag1', 'tag2']), $this->message->tags());
     }
 
+    /**
+     * @covers Icecave\Skew\Entities\JobDetailsTrait
+     */
     public function testSetPaylaod()
     {
         $payload = new stdClass;

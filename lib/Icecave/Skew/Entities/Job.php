@@ -1,12 +1,13 @@
 <?php
 namespace Icecave\Skew\Entities;
 
-use Icecave\Collections\Set;
 use Icecave\Skew\Entities\Messages\Job\JobRequestMessage;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
 class Job implements JobInterface
 {
+    use JobDetailsTrait;
+
     /**
      * @param string $id   The job ID.
      * @param string $task The task name to execute.
@@ -14,8 +15,6 @@ class Job implements JobInterface
     public function __construct($id, $task)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
-
-        $this->tags = new Set;
 
         $this->setId($id);
         $this->setTask($task);
@@ -57,70 +56,6 @@ class Job implements JobInterface
         $this->id = $id;
     }
 
-    /**
-     * @return string The task name to execute.
-     */
-    public function task()
-    {
-        $this->typeCheck->task(func_get_args());
-
-        return $this->task;
-    }
-
-    /**
-     * @param string $task The task name to execute.
-     */
-    public function setTask($task)
-    {
-        $this->typeCheck->setTask(func_get_args());
-
-        $this->task = $task;
-    }
-
-    /**
-     * @return mixed The payload to send to the task.
-     */
-    public function payload()
-    {
-        $this->typeCheck->payload(func_get_args());
-
-        return $this->payload;
-    }
-
-    /**
-     * @param mixed $payload The payload to send to the task.
-     */
-    public function setPayload($payload)
-    {
-        $this->typeCheck->setPayload(func_get_args());
-
-        $this->payload = $payload;
-    }
-
-    /**
-     * @return Set<string> Arbitrary string tags.
-     */
-    public function tags()
-    {
-        $this->typeCheck->tags(func_get_args());
-
-        return $this->tags;
-    }
-
-    /**
-     * @param mixed<string> $tags Arbitrary string tags.
-     */
-    public function setTags($tags)
-    {
-        $this->typeCheck->setTags(func_get_args());
-
-        $this->tags->clear();
-        $this->tags->unionInPlace($tags);
-    }
-
     private $typeCheck;
     private $id;
-    private $task;
-    private $tags;
-    private $payload;
 }

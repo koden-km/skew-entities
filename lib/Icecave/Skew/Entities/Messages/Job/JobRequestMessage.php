@@ -1,13 +1,16 @@
 <?php
 namespace Icecave\Skew\Entities\Messages\Job;
 
-use Icecave\Collections\Set;
+use Icecave\Skew\Entities\JobDetailsInterface;
+use Icecave\Skew\Entities\JobDetailsTrait;
 use Icecave\Skew\Entities\Messages\ClientMessageInterface;
 use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
-class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface
+class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface, JobDetailsInterface
 {
+    use JobDetailsTrait;
+
     /**
      * @param string $job  The job ID.
      * @param string $task The task name to execute.
@@ -15,8 +18,6 @@ class JobRequestMessage extends AbstractJobMessage implements ClientMessageInter
     public function __construct($job, $task)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
-
-        $this->tags = new Set;
 
         parent::__construct();
 
@@ -35,67 +36,6 @@ class JobRequestMessage extends AbstractJobMessage implements ClientMessageInter
     }
 
     /**
-     * @return string The task name to execute.
-     */
-    public function task()
-    {
-        $this->typeCheck->task(func_get_args());
-
-        return $this->task;
-    }
-
-    /**
-     * @param string $task The task name to execute.
-     */
-    public function setTask($task)
-    {
-        $this->typeCheck->setTask(func_get_args());
-
-        $this->task = $task;
-    }
-
-    /**
-     * @return Set<string> Arbitrary string tags.
-     */
-    public function tags()
-    {
-        $this->typeCheck->tags(func_get_args());
-
-        return $this->tags;
-    }
-
-    /**
-     * @param mixed<string> $tags Arbitrary string tags.
-     */
-    public function setTags($tags)
-    {
-        $this->typeCheck->setTags(func_get_args());
-
-        $this->tags->clear();
-        $this->tags->unionInPlace($tags);
-    }
-
-    /**
-     * @return mixed The payload to send to the task.
-     */
-    public function payload()
-    {
-        $this->typeCheck->payload(func_get_args());
-
-        return $this->payload;
-    }
-
-    /**
-     * @param mixed $payload The payload to send to the task.
-     */
-    public function setPayload($payload)
-    {
-        $this->typeCheck->setPayload(func_get_args());
-
-        $this->payload = $payload;
-    }
-
-    /**
      * @param VisitorInterface $visitor
      *
      * @return mixed
@@ -108,7 +48,4 @@ class JobRequestMessage extends AbstractJobMessage implements ClientMessageInter
     }
 
     private $typeCheck;
-    private $task;
-    private $tags;
-    private $payload;
 }
