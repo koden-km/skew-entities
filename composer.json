@@ -23,5 +23,12 @@
             "Icecave\\Skew\\Entities": "lib",
             "Icecave\\Skew\\Entities\\TypeCheck": "lib-typhoon"
         }
+    },
+    "extra": {
+        "typhoon": {
+            "output-path": "lib-typhoon",
+            "validator-namespace": "Icecave\\Skew\\Entities\\TypeCheck",
+            "use-native-callable": true
+        }
     }
 }
