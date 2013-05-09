@@ -1,14 +1,14 @@
 <?php
-namespace Icecave\Skew\Entities\TypeCheck\Validator\Icecave\Skew\Entities\Messages\Job;
+namespace Icecave\Skew\Entities\TypeCheck\Validator\Icecave\Skew\Entities;
 
-class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
+class JobTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
 {
     public function validateConstruct(array $arguments)
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 2) {
             if ($argumentCount < 1) {
-                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('job', 0, 'string');
+                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('id', 0, 'string');
             }
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('task', 1, 'string');
         } elseif ($argumentCount > 2) {
@@ -17,7 +17,7 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
         $value = $arguments[0];
         if (!\is_string($value)) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'job',
+                'id',
                 0,
                 $arguments[0],
                 'string'
@@ -34,10 +34,39 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
         }
     }
 
-    public function type(array $arguments)
+    public function fromRequest(array $arguments)
+    {
+        $argumentCount = \count($arguments);
+        if ($argumentCount < 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('request', 0, 'Icecave\\Skew\\Entities\\Messages\\Job\\JobRequestMessage');
+        } elseif ($argumentCount > 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
+        }
+    }
+
+    public function id(array $arguments)
     {
         if (\count($arguments) > 0) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
+        }
+    }
+
+    public function setId(array $arguments)
+    {
+        $argumentCount = \count($arguments);
+        if ($argumentCount < 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('id', 0, 'string');
+        } elseif ($argumentCount > 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
+        }
+        $value = $arguments[0];
+        if (!\is_string($value)) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
+                'id',
+                0,
+                $arguments[0],
+                'string'
+            );
         }
     }
 
@@ -64,6 +93,23 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
                 $arguments[0],
                 'string'
             );
+        }
+    }
+
+    public function payload(array $arguments)
+    {
+        if (\count($arguments) > 0) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
+        }
+    }
+
+    public function setPayload(array $arguments)
+    {
+        $argumentCount = \count($arguments);
+        if ($argumentCount < 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('payload', 0, 'mixed');
+        } elseif ($argumentCount > 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
     }
 
@@ -101,33 +147,6 @@ class JobRequestMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstra
                 $arguments[0],
                 'mixed<string>'
             );
-        }
-    }
-
-    public function payload(array $arguments)
-    {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function setPayload(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('payload', 0, 'mixed');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
-        }
-    }
-
-    public function accept(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('visitor', 0, 'Icecave\\Skew\\Entities\\Messages\\VisitorInterface');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
     }
 

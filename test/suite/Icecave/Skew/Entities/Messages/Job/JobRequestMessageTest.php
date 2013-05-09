@@ -10,7 +10,7 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->message = new JobRequestMessage('skew.test');
+        $this->message = new JobRequestMessage('123', 'skew.test');
     }
 
     public function testInterfaces()
@@ -33,6 +33,7 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
      */
     public function testSetJob()
     {
+        $this->assertSame('123', $this->message->job());
         $this->message->setJob('abc');
         $this->assertSame('abc', $this->message->job());
     }

@@ -9,16 +9,19 @@ use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface
 {
     /**
+     * @param string $job  The job ID.
      * @param string $task The task name to execute.
      */
-    public function __construct($task)
+    public function __construct($job, $task)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
-        $this->setTask($task);
         $this->tags = new Set;
 
         parent::__construct();
+
+        $this->setJob($job);
+        $this->setTask($task);
     }
 
     /**
