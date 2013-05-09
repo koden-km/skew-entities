@@ -26,12 +26,18 @@ class JobLogMessageTest extends PHPUnit_Framework_TestCase
         $this->assertSame('job.log', $this->message->type());
     }
 
+    /**
+     * @covers Icecave\Skew\Entities\Job\AbstractJobMessage
+     */
     public function testSetJob()
     {
         $this->message->setJob('abc');
         $this->assertSame('abc', $this->message->job());
     }
 
+    /**
+     * @covers Icecave\Skew\Entities\Processor\ProcessorTrait
+     */
     public function testSetProcessor()
     {
         $this->message->setProcessor('def');
