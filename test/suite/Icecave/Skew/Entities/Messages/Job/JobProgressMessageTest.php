@@ -51,6 +51,18 @@ class JobProgressMessageTest extends PHPUnit_Framework_TestCase
         $this->assertSame(1.0, $this->message->progress());
     }
 
+    public function testSetProgressFailureOverflow()
+    {
+        $this->setExpectedException('DomainException', 'Progress must be between 0.0 and 1.0, inclusive.');
+        $this->message->setProgress(1.1);
+    }
+
+    public function testSetProgressFailureUnderflow()
+    {
+        $this->setExpectedException('DomainException', 'Progress must be between 0.0 and 1.0, inclusive.');
+        $this->message->setProgress(-1.0);
+    }
+
     public function testAccept()
     {
         $visitor = Phake::mock('Icecave\Skew\Entities\Messages\VisitorInterface');

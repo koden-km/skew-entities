@@ -1,6 +1,7 @@
 <?php
 namespace Icecave\Skew\Entities\Messages\Job;
 
+use DomainException;
 use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
@@ -44,6 +45,10 @@ class JobProgressMessage extends AbstractJobMessageFromProcessor
     public function setProgress($progress)
     {
         $this->typeCheck->setProgress(func_get_args());
+
+        if ($progress < 0.0 || $progress > 1.0) {
+            throw new DomainException('Progress must be between 0.0 and 1.0, inclusive.');
+        }
 
         $this->progress = $progress;
     }
