@@ -1,6 +1,6 @@
 {
     "name": "icecave/skew-entities",
-    "description": "Skew data entities.",
+    "description": "Data entities for Skew messages.",
     "homepage": "https://github.com/IcecaveStudios/skew-entities",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "eloquent/typhoon": "~0.9",
-        "icecave/archer": "~0.3"
+        "icecave/archer": "~0.4"
     },
     "autoload": {
         "psr-0": {
