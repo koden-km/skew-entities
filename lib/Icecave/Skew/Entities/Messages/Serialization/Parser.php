@@ -23,11 +23,17 @@ use Icecave\Skew\Entities\Messages\Processor\ProcessorShutdownMessage;
 use Icecave\Skew\Entities\Messages\Processor\ProcessorStartMessage;
 use Icecave\Skew\Entities\Messages\Processor\ProcessorStopMessage;
 use Icecave\Skew\Entities\Priority;
+use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
 class Parser
 {
+    /**
+     * @param ConstraintInterface $constraint
+     */
     public function __construct(ConstraintInterface $constraint)
     {
+        $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
+
         $this->reader = new ValidatingReader(
             new BoundConstraintValidator(
                 $constraint,
@@ -36,8 +42,15 @@ class Parser
         );
     }
 
+    /**
+     * @param string $message
+     *
+     * @return MessageInterface
+     */
     public function parse($message)
     {
+        $this->typeCheck->parse(func_get_args());
+
         $value = $this->reader->readString($message);
         $messageType = $value->type->value();
 
@@ -65,11 +78,19 @@ class Parser
             $message = $this->createProcessorStopMessage($value);
         }
 
-        return $this->setCommonProperties($value, $message);
+        $this->setCommonProperties($value, $message);
+
+        return $message;
     }
 
+    /**
+     * @param ObjectValue      $value
+     * @param MessageInterface $message
+     */
     private function setCommonProperties(ObjectValue $value, MessageInterface $message)
     {
+        $this->typeCheck->setCommonProperties(func_get_args());
+
         if ($message instanceof AbstractJobMessage) {
             if ($value->has('job')) {
                 $message->setJobId($value->job->value());
@@ -81,40 +102,73 @@ class Parser
                 $message->setProcessor($value->processor->value());
             }
         }
-
-        return $message;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobAcceptMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobAcceptMessage(func_get_args());
+
         return new JobAcceptMessage(
             $value->retry->value()
         );
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobCompleteMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobCompleteMessage(func_get_args());
+
         return new JobCompleteMessage;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobErrorMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobErrorMessage(func_get_args());
+
         return new JobErrorMessage(
             $value->reason->value(),
             $value->retry->value()
         );
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobLogMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobLogMessage(func_get_args());
+
         return new JobLogMessage(
             LogLevel::instanceByValue($value->level->value()),
             $value->message->value()
         );
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobProgressMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobProgressMessage(func_get_args());
+
         if ($value->has('status')) {
             $status = $value->status->value();
         } else {
@@ -127,15 +181,29 @@ class Parser
         );
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobRejectMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobRejectMessage(func_get_args());
+
         return new JobRejectMessage(
             $value->reason->value()
         );
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createJobRequestMessage(ObjectValue $value)
     {
+        $this->typeCheck->createJobRequestMessage(func_get_args());
+
         $message =  new JobRequestMessage(
             $value->job->value(),
             $value->task->value()
@@ -151,28 +219,57 @@ class Parser
         return $message;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createProcessorReadyMessage(ObjectValue $value)
     {
+        $this->typeCheck->createProcessorReadyMessage(func_get_args());
+
         return new ProcessorReadyMessage;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createProcessorShutdownMessage(ObjectValue $value)
     {
+        $this->typeCheck->createProcessorShutdownMessage(func_get_args());
+
         return new ProcessorShutdownMessage;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createProcessorStartMessage(ObjectValue $value)
     {
+        $this->typeCheck->createProcessorStartMessage(func_get_args());
+
         $message = new ProcessorStartMessage;
         $message->setCapabilities($value->capabilities->value());
 
         return $message;
     }
 
+    /**
+     * @param ObjectValue $value
+     *
+     * @return MessageInterface
+     */
     private function createProcessorStopMessage(ObjectValue $value)
     {
+        $this->typeCheck->createProcessorStopMessage(func_get_args());
+
         return new ProcessorStopMessage;
     }
 
+    private $typeCheck;
     private $reader;
 }

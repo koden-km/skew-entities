@@ -112,7 +112,7 @@ class ParserTest extends PHPUnit_Framework_TestCase
 
     public function testParseJobRequestMessage()
     {
-        $message = '{ "type": "job.request", "job": "123", "priority": "high", "task": "xyz", "tags" : [ "a", "b", "c" ], "payload": { "foo" : "bar" } }';
+        $message = '{ "type": "job.request", "job": "123", "priority": "high", "task": "xyz", "payload": { "foo": "bar" }, "tags": [ "a", "b", "c" ] }';
 
         $payload = new stdClass;
         $payload->foo = 'bar';
