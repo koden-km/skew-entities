@@ -25,4 +25,15 @@ class PriorityTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('Icecave\Parity\Exception\NotComparableException');
         Priority::HIGH()->compare(3);
     }
+
+    public function testOrdering()
+    {
+        $expected = [
+            'HIGH'   => Priority::HIGH(),
+            'NORMAL' => Priority::NORMAL(),
+            'LOW'    => Priority::LOW(),
+        ];
+
+        $this->assertSame($expected, Priority::multitonInstances());
+    }
 }
