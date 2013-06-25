@@ -12,8 +12,10 @@
     "require": {
         "php": ">=5.4",
         "eloquent/enumeration": "~3",
+        "eloquent/schemer": "~0.3.1",
         "icecave/collections": "~0.6",
-        "icecave/parity": "~0.1"
+        "icecave/parity": "~0.1",
+        "icecave/skew-schema": "dev-develop"
     },
     "require-dev": {
         "eloquent/typhoon": "~0.9",
