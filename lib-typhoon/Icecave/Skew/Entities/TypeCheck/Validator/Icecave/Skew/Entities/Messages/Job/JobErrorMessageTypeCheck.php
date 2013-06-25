@@ -24,7 +24,7 @@ class JobErrorMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstract
             $value = $arguments[1];
             if (!\is_bool($value)) {
                 throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                    'reschedule',
+                    'retry',
                     1,
                     $arguments[1],
                     'boolean'
@@ -37,32 +37,6 @@ class JobErrorMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstract
     {
         if (\count($arguments) > 0) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function reschedule(array $arguments)
-    {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
-        }
-    }
-
-    public function setReschedule(array $arguments)
-    {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('reschedule', 0, 'boolean');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
-        }
-        $value = $arguments[0];
-        if (!\is_bool($value)) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'reschedule',
-                0,
-                $arguments[0],
-                'boolean'
-            );
         }
     }
 

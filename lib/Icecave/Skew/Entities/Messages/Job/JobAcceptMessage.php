@@ -6,9 +6,16 @@ use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
 class JobAcceptMessage extends AbstractJobMessageFromProcessor
 {
-    public function __construct()
+    use RetryTrait;
+
+    /**
+     * @param boolean $retry True if the job is allowed to be retried.
+     */
+    public function __construct($retry = false)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
+
+        $this->setRetry($retry);
 
         parent::__construct();
     }

@@ -52,11 +52,14 @@ class JobErrorMessageTest extends PHPUnit_Framework_TestCase
         $this->assertSame('This is the error reason.', $this->message->reason());
     }
 
-    public function testSetReschedule()
+    /**
+     * @covers Icecave\Skew\Entities\Messages\Job\RetryTrait
+     */
+    public function testSetRetry()
     {
-        $this->assertTrue($this->message->reschedule());
-        $this->message->setReschedule(false);
-        $this->assertFalse($this->message->reschedule());
+        $this->assertTrue($this->message->retry());
+        $this->message->setRetry(false);
+        $this->assertFalse($this->message->retry());
     }
 
     public function testAccept()

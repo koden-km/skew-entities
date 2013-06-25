@@ -8,7 +8,7 @@ class JobAcceptMessageTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->message = new JobAcceptMessage;
+        $this->message = new JobAcceptMessage(true);
     }
 
     public function testInterfaces()
@@ -42,6 +42,16 @@ class JobAcceptMessageTest extends PHPUnit_Framework_TestCase
     {
         $this->message->setProcessor('def');
         $this->assertSame('def', $this->message->processor());
+    }
+
+    /**
+     * @covers Icecave\Skew\Entities\Messages\Job\RetryTrait
+     */
+    public function testSetRetry()
+    {
+        $this->assertTrue($this->message->retry());
+        $this->message->setRetry(false);
+        $this->assertFalse($this->message->retry());
     }
 
     public function testAccept()

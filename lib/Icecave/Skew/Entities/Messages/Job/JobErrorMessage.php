@@ -7,17 +7,18 @@ use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 class JobErrorMessage extends AbstractJobMessageFromProcessor
 {
     use ReasonTrait;
+    use RetryTrait;
 
     /**
-     * @param string  $reason     The reason the job failed.
-     * @param boolean $reschedule True if the job is allowed to be re-scheduled.
+     * @param string  $reason The reason the job failed.
+     * @param boolean $retry  True if the job is allowed to be retried.
      */
-    public function __construct($reason, $reschedule = false)
+    public function __construct($reason, $retry = false)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
         $this->setReason($reason);
-        $this->setReschedule($reschedule);
+        $this->setRetry($retry);
 
         parent::__construct();
     }
@@ -33,26 +34,6 @@ class JobErrorMessage extends AbstractJobMessageFromProcessor
     }
 
     /**
-     * @return boolean True if the job is allowed to be re-scheduled.
-     */
-    public function reschedule()
-    {
-        $this->typeCheck->reschedule(func_get_args());
-
-        return $this->reschedule;
-    }
-
-    /**
-     * @param boolean $reschedule True if the job is allowed to be re-scheduled.
-     */
-    public function setReschedule($reschedule)
-    {
-        $this->typeCheck->setReschedule(func_get_args());
-
-        $this->reschedule = $reschedule;
-    }
-
-    /**
      * @param VisitorInterface $visitor
      *
      * @return mixed
@@ -65,5 +46,4 @@ class JobErrorMessage extends AbstractJobMessageFromProcessor
     }
 
     private $typeCheck;
-    private $reschedule;
 }

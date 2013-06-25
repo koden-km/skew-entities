@@ -5,8 +5,20 @@ class JobAcceptMessageTypeCheck extends \Icecave\Skew\Entities\TypeCheck\Abstrac
 {
     public function validateConstruct(array $arguments)
     {
-        if (\count($arguments) > 0) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
+        $argumentCount = \count($arguments);
+        if ($argumentCount > 1) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
+        }
+        if ($argumentCount > 0) {
+            $value = $arguments[0];
+            if (!\is_bool($value)) {
+                throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
+                    'retry',
+                    0,
+                    $arguments[0],
+                    'boolean'
+                );
+            }
         }
     }
 
