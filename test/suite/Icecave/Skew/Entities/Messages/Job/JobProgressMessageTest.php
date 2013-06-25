@@ -8,7 +8,7 @@ class JobProgressMessageTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->message = new JobProgressMessage(0.5);
+        $this->message = new JobProgressMessage(0.5, 'The status!');
     }
 
     public function testInterfaces()
@@ -61,6 +61,15 @@ class JobProgressMessageTest extends PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('DomainException', 'Progress must be between 0.0 and 1.0, inclusive.');
         $this->message->setProgress(-1.0);
+    }
+
+    public function testSetStatus()
+    {
+        $this->assertSame('The status!', $this->message->status());
+        $this->message->setStatus('New status!');
+        $this->assertSame('New status!', $this->message->status());
+        $this->message->setStatus(null);
+        $this->assertNull($this->message->status());
     }
 
     public function testAccept()

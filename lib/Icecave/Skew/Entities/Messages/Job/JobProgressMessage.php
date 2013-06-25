@@ -8,13 +8,15 @@ use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 class JobProgressMessage extends AbstractJobMessageFromProcessor
 {
     /**
-     * @param float $progress The job's progress (1.0 = 100% complete).
+     * @param float       $progress The job's progress (1.0 = 100% complete).
+     * @param string|null $status   Human-readable description of the job's status.
      */
-    public function __construct($progress = 0.0)
+    public function __construct($progress = 0.0, $status = null)
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
         $this->setProgress($progress);
+        $this->setStatus($status);
 
         parent::__construct();
     }
@@ -54,6 +56,26 @@ class JobProgressMessage extends AbstractJobMessageFromProcessor
     }
 
     /**
+     * @return string|null Human-readable description of the job's status.
+     */
+    public function status()
+    {
+        $this->typeCheck->status(func_get_args());
+
+        return $this->status;
+    }
+
+    /**
+     * @param string|null $status Human-readable description of the job's status.
+     */
+    public function setStatus($status)
+    {
+        $this->typeCheck->setStatus(func_get_args());
+
+        $this->status = $status;
+    }
+
+    /**
      * @param VisitorInterface $visitor
      *
      * @return mixed
@@ -67,4 +89,5 @@ class JobProgressMessage extends AbstractJobMessageFromProcessor
 
     private $typeCheck;
     private $progress;
+    private $status;
 }
