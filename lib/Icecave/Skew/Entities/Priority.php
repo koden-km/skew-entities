@@ -2,10 +2,11 @@
 namespace Icecave\Skew\Entities;
 
 use Eloquent\Enumeration\Enumeration;
+use Icecave\Parity\Exception\NotComparableException;
 use Icecave\Parity\ExtendedComparableInterface;
 use Icecave\Parity\ExtendedComparableTrait;
 use Icecave\Parity\RestrictedComparableInterface;
-use Icecave\Parity\Exception\NotComparableException;
+use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
 class Priority extends Enumeration implements ExtendedComparableInterface, RestrictedComparableInterface
 {
@@ -23,6 +24,8 @@ class Priority extends Enumeration implements ExtendedComparableInterface, Restr
      */
     public function compare($value)
     {
+        TypeCheck::get(__CLASS__)->compare(func_get_args());
+
         if ($this === $value) {
             return 0;
         } elseif (!$this->canCompare($value)) {
@@ -44,11 +47,18 @@ class Priority extends Enumeration implements ExtendedComparableInterface, Restr
      */
     public function canCompare($value)
     {
+        TypeCheck::get(__CLASS__)->canCompare(func_get_args());
+
         return $value instanceof self;
     }
 
-    private function numericPriority()
+    /**
+     * @return integer A numeric representation of the priority.
+     */
+    public function numericPriority()
     {
+        TypeCheck::get(__CLASS__)->numericPriority(func_get_args());
+
         if (Priority::HIGH() === $this) {
             return +1;
         } elseif (Priority::LOW() === $this) {

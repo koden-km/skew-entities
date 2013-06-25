@@ -36,4 +36,11 @@ class PriorityTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame($expected, Priority::multitonInstances());
     }
+
+    public function testNumericPriority()
+    {
+        $this->assertSame(+1, Priority::HIGH()->numericPriority());
+        $this->assertSame( 0, Priority::NORMAL()->numericPriority());
+        $this->assertSame(-1, Priority::LOW()->numericPriority());
+    }
 }
