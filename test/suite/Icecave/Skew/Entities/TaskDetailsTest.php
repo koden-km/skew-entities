@@ -10,7 +10,7 @@ class TaskDetailsTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->job = new TaskDetails('skew.test');
+        $this->taskDetails = new TaskDetails('skew.test');
     }
 
     public function testFromRequest()
@@ -32,11 +32,21 @@ class TaskDetailsTest extends PHPUnit_Framework_TestCase
     /**
      * @covers Icecave\Skew\Entities\TaskDetailsTrait
      */
+    public function testSetPriority()
+    {
+        $this->assertSame(Priority::NORMAL(), $this->taskDetails->priority());
+        $this->taskDetails->setPriority(Priority::HIGH());
+        $this->assertSame(Priority::HIGH(), $this->taskDetails->priority());
+    }
+
+    /**
+     * @covers Icecave\Skew\Entities\TaskDetailsTrait
+     */
     public function testSetTask()
     {
-        $this->assertSame('skew.test', $this->job->task());
-        $this->job->setTask('skew.other');
-        $this->assertSame('skew.other', $this->job->task());
+        $this->assertSame('skew.test', $this->taskDetails->task());
+        $this->taskDetails->setTask('skew.other');
+        $this->assertSame('skew.other', $this->taskDetails->task());
     }
 
     /**
@@ -44,9 +54,9 @@ class TaskDetailsTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTags()
     {
-        $this->assertEquals(new Set, $this->job->tags());
-        $this->job->setTags(['tag1', 'tag2']);
-        $this->assertEquals(new Set(['tag1', 'tag2']), $this->job->tags());
+        $this->assertEquals(new Set, $this->taskDetails->tags());
+        $this->taskDetails->setTags(['tag1', 'tag2']);
+        $this->assertEquals(new Set(['tag1', 'tag2']), $this->taskDetails->tags());
     }
 
     /**
@@ -55,8 +65,8 @@ class TaskDetailsTest extends PHPUnit_Framework_TestCase
     public function testSetPayload()
     {
         $payload = new stdClass;
-        $this->assertNull($this->job->payload());
-        $this->job->setPayload($payload);
-        $this->assertSame($payload, $this->job->payload());
+        $this->assertNull($this->taskDetails->payload());
+        $this->taskDetails->setPayload($payload);
+        $this->assertSame($payload, $this->taskDetails->payload());
     }
 }

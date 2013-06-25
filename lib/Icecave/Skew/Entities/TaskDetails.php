@@ -28,6 +28,7 @@ class TaskDetails implements TaskDetailsInterface
         TypeCheck::get(__CLASS__)->fromRequest(func_get_args());
 
         $taskDetails = new static($request->task());
+        $taskDetails->setPriority($request->priority());
         $taskDetails->setPayload($request->payload());
         $taskDetails->setTags($request->tags());
 

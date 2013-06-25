@@ -6,6 +6,26 @@ use Icecave\Collections\Set;
 trait TaskDetailsTrait
 {
     /**
+     * @return Priority The task priority.
+     */
+    public function priority()
+    {
+        if (null === $this->priority) {
+            $this->setPriority(Priority::NORMAL());
+        }
+
+        return $this->priority;
+    }
+
+    /**
+     * @param Priority $priority The task priority.
+     */
+    public function setPriority(Priority $priority)
+    {
+        $this->priority = $priority;
+    }
+
+    /**
      * @return string The task name to execute.
      */
     public function task()
@@ -59,6 +79,7 @@ trait TaskDetailsTrait
         $t->unionInPlace($tags);
     }
 
+    private $priority;
     private $task;
     private $tags;
     private $payload;
