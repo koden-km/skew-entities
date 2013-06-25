@@ -24,6 +24,7 @@ use Icecave\Skew\Entities\Messages\Processor\ProcessorStartMessage;
 use Icecave\Skew\Entities\Messages\Processor\ProcessorStopMessage;
 use Icecave\Skew\Entities\Priority;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
+use InvalidArgumentException;
 
 class Parser
 {
@@ -52,7 +53,7 @@ class Parser
         $this->typeCheck->parse(func_get_args());
 
         $value = $this->reader->readString($message);
-        $messageType = $value->type->value();
+        $messageType = $value->getRawDefault('type');
 
         if ('job.accept' === $messageType) {
             $message = $this->createJobAcceptMessage($value);
@@ -76,6 +77,8 @@ class Parser
             $message = $this->createProcessorStartMessage($value);
         } elseif ('processor.stop' === $messageType) {
             $message = $this->createProcessorStopMessage($value);
+        } else {
+            throw new InvalidArgumentException('Invalid message type.');
         }
 
         $this->setCommonProperties($value, $message);

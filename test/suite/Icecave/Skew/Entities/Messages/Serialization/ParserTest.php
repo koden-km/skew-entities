@@ -2,6 +2,7 @@
 namespace Icecave\Skew\Entities\Messages\Serialization;
 
 use Eloquent\Schemer\Constraint\Reader\SchemaReader;
+use Eloquent\Schemer\Constraint\Schema;
 use Icecave\Skew\Entities\Messages\Job\JobAcceptMessage;
 use Icecave\Skew\Entities\Messages\Job\JobCompleteMessage;
 use Icecave\Skew\Entities\Messages\Job\JobErrorMessage;
@@ -31,6 +32,14 @@ class ParserTest extends PHPUnit_Framework_TestCase
         }
 
         $this->parser = new Parser(self::$schema);
+    }
+
+    public function testParseFailure()
+    {
+        $this->parser = new Parser(new Schema);
+
+        $this->setExpectedException('InvalidArgumentException');
+        $this->parser->parse('{}');
     }
 
     public function testParseJobAcceptMessage()
