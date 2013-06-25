@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f1288177424a54228d4b8a3b47560048",
+    "hash": "1d9caefc836a9466115a00a6816e6e1a",
     "packages": [
         {
             "name": "eloquent/enumeration",
@@ -377,44 +377,6 @@
                 "string"
             ],
             "time": "2013-01-11 00:04:43"
-        },
-        {
-            "name": "icecave/skew-schema",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/IcecaveStudios/skew-schema.git",
-                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/IcecaveStudios/skew-schema/zipball/f7c02c150f07882441a3b2b95d7b05c8406b3285",
-                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285",
-                "shasum": ""
-            },
-            "require-dev": {
-                "eloquent/schemer": ">=0.2,<1.0",
-                "icecave/archer": ">=0.4,<1.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "James Harris",
-                    "email": "james.harris@icecave.com.au",
-                    "homepage": "https://github.com/jmalloc"
-                },
-                {
-                    "name": "Kevin Millar",
-                    "email": "koden.km@gmail.com"
-                }
-            ],
-            "description": "JSON schema for Skew messages.",
-            "homepage": "https://github.com/IcecaveStudios/skew-schema",
-            "time": "2013-06-25 00:47:49"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -1081,6 +1043,44 @@
                 "parser"
             ],
             "time": "2013-01-14 14:06:52"
+        },
+        {
+            "name": "icecave/skew-schema",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/skew-schema.git",
+                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IcecaveStudios/skew-schema/zipball/f7c02c150f07882441a3b2b95d7b05c8406b3285",
+                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285",
+                "shasum": ""
+            },
+            "require-dev": {
+                "eloquent/schemer": ">=0.2,<1.0",
+                "icecave/archer": ">=0.4,<1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au",
+                    "homepage": "https://github.com/jmalloc"
+                },
+                {
+                    "name": "Kevin Millar",
+                    "email": "koden.km@gmail.com"
+                }
+            ],
+            "description": "JSON schema for Skew messages.",
+            "homepage": "https://github.com/IcecaveStudios/skew-schema",
+            "time": "2013-06-25 00:47:49"
         },
         {
             "name": "nikic/php-parser",

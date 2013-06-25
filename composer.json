@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "James Harris",
-            "email": "james.harris@icecave.com.au"
+            "email": "james.harris@icecave.com.au",
+            "homepage": "https://github.com/jmalloc"
         }
     ],
     "require": {
@@ -14,12 +15,12 @@
         "eloquent/enumeration": "~3",
         "eloquent/schemer": "~0.3.1",
         "icecave/collections": "~0.6",
-        "icecave/parity": "~0.1",
-        "icecave/skew-schema": "dev-develop"
+        "icecave/parity": "~0.1"
     },
     "require-dev": {
         "eloquent/typhoon": "~0.9",
-        "icecave/archer": "~0.5"
+        "icecave/archer": "~0.5",
+        "icecave/skew-schema": "dev-develop"
     },
     "autoload": {
         "psr-0": {
