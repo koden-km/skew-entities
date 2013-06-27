@@ -20,7 +20,7 @@ use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 use stdClass;
 
-class SerializerVisitor implements VisitorInterface
+class EncoderVisitor implements VisitorInterface
 {
     public function __construct()
     {

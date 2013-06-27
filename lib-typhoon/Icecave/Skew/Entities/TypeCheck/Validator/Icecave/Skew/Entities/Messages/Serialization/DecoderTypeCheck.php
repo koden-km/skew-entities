@@ -1,34 +1,22 @@
 <?php
 namespace Icecave\Skew\Entities\TypeCheck\Validator\Icecave\Skew\Entities\Messages\Serialization;
 
-class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
+class DecoderTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
 {
     public function validateConstruct(array $arguments)
     {
-        $argumentCount = \count($arguments);
-        if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('constraint', 0, 'Eloquent\\Schemer\\Constraint\\ConstraintInterface');
-        } elseif ($argumentCount > 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
+        if (\count($arguments) > 0) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
         }
     }
 
-    public function parse(array $arguments)
+    public function decode(array $arguments)
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('message', 0, 'string');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
-        }
-        $value = $arguments[0];
-        if (!\is_string($value)) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentValueException(
-                'message',
-                0,
-                $arguments[0],
-                'string'
-            );
         }
     }
 
@@ -37,9 +25,9 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
         $argumentCount = \count($arguments);
         if ($argumentCount < 2) {
             if ($argumentCount < 1) {
-                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+                throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
             }
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('message', 1, 'Icecave\\Skew\\Entities\\Messages\\MessageInterface');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('outputMessage', 1, 'Icecave\\Skew\\Entities\\Messages\\MessageInterface');
         } elseif ($argumentCount > 2) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(2, $arguments[2]);
         }
@@ -49,7 +37,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -59,7 +47,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -69,7 +57,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -79,7 +67,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -89,7 +77,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -99,7 +87,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -109,7 +97,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -119,7 +107,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -129,7 +117,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -139,7 +127,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }
@@ -149,7 +137,7 @@ class ParserTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {
-            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('value', 0, 'Eloquent\\Schemer\\Value\\ObjectValue');
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\MissingArgumentException('inputMessage', 0, 'stdClass');
         } elseif ($argumentCount > 1) {
             throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(1, $arguments[1]);
         }

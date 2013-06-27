@@ -6,6 +6,22 @@ use Icecave\Collections\Set;
 trait TaskDetailsTrait
 {
     /**
+     * @return string The task name to execute.
+     */
+    public function task()
+    {
+        return $this->task;
+    }
+
+    /**
+     * @param string $task The task name to execute.
+     */
+    public function setTask($task)
+    {
+        $this->task = $task;
+    }
+
+    /**
      * @return Priority The task priority.
      */
     public function priority()
@@ -23,22 +39,6 @@ trait TaskDetailsTrait
     public function setPriority(Priority $priority)
     {
         $this->priority = $priority;
-    }
-
-    /**
-     * @return string The task name to execute.
-     */
-    public function task()
-    {
-        return $this->task;
-    }
-
-    /**
-     * @param string $task The task name to execute.
-     */
-    public function setTask($task)
-    {
-        $this->task = $task;
     }
 
     /**

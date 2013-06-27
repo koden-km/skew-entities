@@ -3,28 +3,27 @@ namespace Icecave\Skew\Entities\Messages\Serialization;
 
 use Icecave\Skew\Entities\Messages\MessageInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
+use stdClass;
 
-class Serializer
+class Encoder
 {
     public function __construct()
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
 
-        $this->visitor = new SerializerVisitor;
+        $this->visitor = new EncoderVisitor;
     }
 
     /**
      * @param MessageInterface $message
      *
-     * @return string
+     * @return stdClass
      */
-    public function serialize(MessageInterface $message)
+    public function encode(MessageInterface $message)
     {
-        $this->typeCheck->serialize(func_get_args());
+        $this->typeCheck->encode(func_get_args());
 
-        $object = $message->accept($this->visitor);
-
-        return json_encode($object);
+        return $message->accept($this->visitor);
     }
 
     private $typeCheck;

@@ -6,14 +6,14 @@ use Icecave\Collections\Set;
 interface TaskDetailsInterface
 {
     /**
-     * @return Priority
-     */
-    public function priority();
-
-    /**
      * @return string
      */
     public function task();
+
+    /**
+     * @return Priority
+     */
+    public function priority();
 
     /**
      * @return mixed

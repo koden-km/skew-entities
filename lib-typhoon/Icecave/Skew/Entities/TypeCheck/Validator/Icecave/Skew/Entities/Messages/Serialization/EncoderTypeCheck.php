@@ -1,7 +1,7 @@
 <?php
 namespace Icecave\Skew\Entities\TypeCheck\Validator\Icecave\Skew\Entities\Messages\Serialization;
 
-class SerializerTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
+class EncoderTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
 {
     public function validateConstruct(array $arguments)
     {
@@ -10,7 +10,7 @@ class SerializerTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValid
         }
     }
 
-    public function serialize(array $arguments)
+    public function encode(array $arguments)
     {
         $argumentCount = \count($arguments);
         if ($argumentCount < 1) {

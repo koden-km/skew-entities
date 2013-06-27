@@ -1,7 +1,7 @@
 <?php
 namespace Icecave\Skew\Entities\TypeCheck\Validator\Icecave\Skew\Entities\Messages\Serialization;
 
-class SerializerVisitorTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
+class EncoderVisitorTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidator
 {
     public function validateConstruct(array $arguments)
     {
