@@ -17,10 +17,10 @@ class JobRequestMessageTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Icecave\Skew\Entities\Messages\MessageInterface', $this->message);
         $this->assertInstanceOf('Icecave\Skew\Entities\Messages\Flow\ClientMessageInterface', $this->message);
+        $this->assertInstanceOf('Icecave\Skew\Entities\Messages\Flow\DaemonToProcessorMessageInterface', $this->message);
 
         $this->assertNotInstanceOf('Icecave\Skew\Entities\Messages\Flow\ProcessorMessageInterface', $this->message);
         $this->assertNotInstanceOf('Icecave\Skew\Entities\Messages\Flow\DaemonToClientMessageInterface', $this->message);
-        $this->assertNotInstanceOf('Icecave\Skew\Entities\Messages\Flow\DaemonToProcessorMessageInterface', $this->message);
 
         $this->assertInstanceOf('Icecave\Skew\Entities\Messages\Job\JobAwareMessageInterface', $this->message);
         $this->assertNotInstanceOf('Icecave\Skew\Entities\Messages\Processor\ProcessorAwareMessageInterface', $this->message);

@@ -10,6 +10,7 @@ abstract class AbstractVisitor implements VisitorInterface
     {
         $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
     }
+
     /**
      * @param Job\JobAcceptMessage $message
      *
