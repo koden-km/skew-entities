@@ -10,6 +10,13 @@ class DecoderTypeCheck extends \Icecave\Skew\Entities\TypeCheck\AbstractValidato
         }
     }
 
+    public function instance(array $arguments)
+    {
+        if (\count($arguments) > 0) {
+            throw new \Icecave\Skew\Entities\TypeCheck\Exception\UnexpectedArgumentException(0, $arguments[0]);
+        }
+    }
+
     public function decode(array $arguments)
     {
         $argumentCount = \count($arguments);

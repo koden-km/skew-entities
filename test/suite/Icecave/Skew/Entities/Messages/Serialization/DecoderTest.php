@@ -24,6 +24,14 @@ class DecoderTest extends PHPUnit_Framework_TestCase
         $this->decoder = new Decoder;
     }
 
+    public function testInstance()
+    {
+        $decoder = Decoder::instance();
+
+        $this->assertInstanceOf(__NAMESPACE__ . '\Decoder', $decoder);
+        $this->assertSame($decoder, Decoder::instance());
+    }
+
     public function testDecodeFailure()
     {
         $message = new stdClass;

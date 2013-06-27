@@ -27,6 +27,14 @@ class EncoderTest extends PHPUnit_Framework_TestCase
         $this->encoder = new Encoder;
     }
 
+    public function testInstance()
+    {
+        $encoder = Encoder::instance();
+
+        $this->assertInstanceOf(__NAMESPACE__ . '\Encoder', $encoder);
+        $this->assertSame($encoder, Encoder::instance());
+    }
+
     public function testDecodeJobAwareMessageWithoutJob()
     {
         $expected = ['type' => 'job.accept', 'processor' => 'abc', 'retry' => true];

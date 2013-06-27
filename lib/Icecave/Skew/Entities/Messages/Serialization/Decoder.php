@@ -29,6 +29,20 @@ class Decoder
     }
 
     /**
+     * @return Decoder
+     */
+    public static function instance()
+    {
+        TypeCheck::get(__CLASS__)->instance(func_get_args());
+
+        if (null === self::$instance) {
+            self::$instance = new self;
+        }
+
+        return self::$instance;
+    }
+
+    /**
      * @param stdClass $inputMessage
      *
      * @return MessageInterface
@@ -244,6 +258,7 @@ class Decoder
         return new ProcessorStopMessage;
     }
 
+    private static $instance;
     private $typeCheck;
     private $reader;
 }
