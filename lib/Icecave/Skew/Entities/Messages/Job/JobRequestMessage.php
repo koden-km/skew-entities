@@ -1,13 +1,13 @@
 <?php
 namespace Icecave\Skew\Entities\Messages\Job;
 
+use Icecave\Skew\Entities\Messages\Flow\ClientMessageInterface;
+use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TaskDetailsInterface;
 use Icecave\Skew\Entities\TaskDetailsTrait;
-use Icecave\Skew\Entities\Messages\ClientMessageInterface;
-use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
-class JobRequestMessage extends AbstractJobMessage implements ClientMessageInterface, TaskDetailsInterface
+class JobRequestMessage extends AbstractJobMessage implements TaskDetailsInterface, ClientMessageInterface
 {
     use TaskDetailsTrait;
 

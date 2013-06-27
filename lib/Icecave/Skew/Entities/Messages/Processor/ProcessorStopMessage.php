@@ -1,7 +1,7 @@
 <?php
 namespace Icecave\Skew\Entities\Messages\Processor;
 
-use Icecave\Skew\Entities\Messages\DaemonToProcessorMessageInterface;
+use Icecave\Skew\Entities\Messages\Flow\DaemonToProcessorMessageInterface;
 use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 

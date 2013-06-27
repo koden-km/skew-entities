@@ -2,7 +2,7 @@
 namespace Icecave\Skew\Entities\Messages\Processor;
 
 use Icecave\Collections\Set;
-use Icecave\Skew\Entities\Messages\ProcessorMessageInterface;
+use Icecave\Skew\Entities\Messages\Flow\ProcessorMessageInterface;
 use Icecave\Skew\Entities\Messages\VisitorInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 

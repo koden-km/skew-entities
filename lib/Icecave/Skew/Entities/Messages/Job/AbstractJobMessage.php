@@ -4,7 +4,7 @@ namespace Icecave\Skew\Entities\Messages\Job;
 use Icecave\Skew\Entities\Messages\MessageInterface;
 use Icecave\Skew\Entities\TypeCheck\TypeCheck;
 
-abstract class AbstractJobMessage implements MessageInterface
+abstract class AbstractJobMessage implements MessageInterface, JobAwareMessageInterface
 {
     public function __construct()
     {
