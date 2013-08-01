@@ -13,4 +13,4 @@ The repository contains data entites for [Skew](https://github.com/IcecaveStudio
 <!-- references -->
 [Build Status]: https://travis-ci.org/IcecaveStudios/skew-entities.png?branch=develop
 [Test Coverage]: https://coveralls.io/repos/IcecaveStudios/skew-entities/badge.png?branch=develop
-[SemVer]: http://calm-shore-6115.herokuapp.com/?label=semver&value=no+releases&color=red
+[SemVer]: http://calm-shore-6115.herokuapp.com/?label=semver&value=no+releases
