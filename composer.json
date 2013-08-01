@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "eloquent/typhoon": "~0.9",
-        "icecave/archer": "~0.5",
+        "icecave/archer": "1.0.0-alpha.2",
         "icecave/skew-schema": "dev-develop"
     },
     "autoload": {
