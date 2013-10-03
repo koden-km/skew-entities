@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "afef3c2a48a5195267eed0afef161450",
+    "hash": "3a1a2ffb8dd2b07f2df17842dbb47e9a",
     "packages": [
         {
             "name": "eloquent/enumeration",
@@ -1036,16 +1036,16 @@
         },
         {
             "name": "icecave/archer",
-            "version": "1.0.0-alpha.2",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/IcecaveStudios/archer.git",
-                "reference": "f29395874eb668f559f04e98be11ed7e7ccd71dd"
+                "reference": "b0152a3274a5a5e0b8bbac81baaaa74fe5a40290"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/IcecaveStudios/archer/zipball/f29395874eb668f559f04e98be11ed7e7ccd71dd",
-                "reference": "f29395874eb668f559f04e98be11ed7e7ccd71dd",
+                "url": "https://api.github.com/repos/IcecaveStudios/archer/zipball/b0152a3274a5a5e0b8bbac81baaaa74fe5a40290",
+                "reference": "b0152a3274a5a5e0b8bbac81baaaa74fe5a40290",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1054,7 @@
                 "sami/sami": "~1",
                 "satooshi/php-coveralls": "~0.6",
                 "symfony/console": "~2",
-                "symfony/process": "~2"
+                "symfony/process": "~2,<2.3.5"
             },
             "require-dev": {
                 "eloquent/liberator": "~1",
@@ -1070,7 +1070,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Icecave\\Archer": "lib"
+                    "Icecave\\Archer": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1104,7 +1104,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-07-29 21:51:56"
+            "time": "2013-10-01 04:03:32"
         },
         {
             "name": "icecave/pasta-ast",
@@ -1788,17 +1788,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.3.5",
+            "version": "v2.3.4",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "e35e3cea61c851ece0967d8d26b926633e65535a"
+                "reference": "1e91553e1cedd0b8fb1da6ea4f89b02e21713d5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/e35e3cea61c851ece0967d8d26b926633e65535a",
-                "reference": "e35e3cea61c851ece0967d8d26b926633e65535a",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/1e91553e1cedd0b8fb1da6ea4f89b02e21713d5b",
+                "reference": "1e91553e1cedd0b8fb1da6ea4f89b02e21713d5b",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1831,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2013-09-19 09:45:20"
+            "time": "2013-08-22 06:42:25"
         },
         {
             "name": "symfony/stopwatch",
@@ -1982,7 +1982,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "icecave/archer": 15,
         "icecave/skew-schema": 20
     },
     "platform": {
