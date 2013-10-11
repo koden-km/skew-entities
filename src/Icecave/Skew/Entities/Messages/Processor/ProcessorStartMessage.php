@@ -43,7 +43,7 @@ class ProcessorStartMessage extends AbstractProcessorMessage implements Processo
         $this->typeCheck->setCapabilities(func_get_args());
 
         $this->capabilities->clear();
-        $this->capabilities->unionInPlace($capabilities);
+        $this->capabilities->addMany($capabilities);
     }
 
     /**

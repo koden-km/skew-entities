@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3a1a2ffb8dd2b07f2df17842dbb47e9a",
+    "hash": "5fd0e4bd69d280e1393d4e8f5d8e59de",
     "packages": [
         {
             "name": "eloquent/enumeration",
@@ -163,39 +163,42 @@
         },
         {
             "name": "icecave/collections",
-            "version": "0.6.0",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/IcecaveStudios/collections.git",
-                "reference": "b36f5d1d148ba772753feaae1cee252c706d718c"
+                "reference": "c12f606057b91c956a5af4ae7bdd7a13fdbedcd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/IcecaveStudios/collections/zipball/b36f5d1d148ba772753feaae1cee252c706d718c",
-                "reference": "b36f5d1d148ba772753feaae1cee252c706d718c",
+                "url": "https://api.github.com/repos/IcecaveStudios/collections/zipball/c12f606057b91c956a5af4ae7bdd7a13fdbedcd9",
+                "reference": "c12f606057b91c956a5af4ae7bdd7a13fdbedcd9",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
+                "icecave/parity": "~0.1.0",
                 "icecave/repr": "~1",
-                "php": ">=5.3.3"
+                "php": ">=5.3"
             },
             "require-dev": {
                 "eloquent/liberator": "~1",
-                "eloquent/typhoon": "~0.9",
-                "icecave/archer": "~0.2"
+                "eloquent/typhoon": "~0.9.0",
+                "ezzatron/phpunit-extensions": "~1",
+                "icecave/archer": "~1"
             },
             "type": "library",
             "extra": {
                 "typhoon": {
-                    "output-path": "lib-typhoon",
+                    "output-path": "src-typhoon",
                     "validator-namespace": "Icecave\\Collections\\TypeCheck",
                     "use-native-callable": false
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "Icecave\\Collections": "lib",
-                    "Icecave\\Collections\\TypeCheck": "lib-typhoon"
+                    "Icecave\\Collections": "src",
+                    "Icecave\\Collections\\TypeCheck": "src-typhoon"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -209,7 +212,7 @@
                     "homepage": "https://github.com/jmalloc"
                 }
             ],
-            "description": "A set of PHP collection types loosely inspired by the .NET runtime and the C++ STL.",
+            "description": "A PHP collection library loosely inspired by the .NET runtime and the C++ STL.",
             "homepage": "https://github.com/IcecaveStudios/collections",
             "keywords": [
                 "array",
@@ -221,7 +224,7 @@
                 "sequence",
                 "stack"
             ],
-            "time": "2013-02-26 04:19:11"
+            "time": "2013-09-23 04:36:07"
         },
         {
             "name": "icecave/isolator",
@@ -1208,17 +1211,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/IcecaveStudios/skew-schema.git",
-                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285"
+                "reference": "bb12e133a7a5c3366ecab663255743d934dca985"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/IcecaveStudios/skew-schema/zipball/f7c02c150f07882441a3b2b95d7b05c8406b3285",
-                "reference": "f7c02c150f07882441a3b2b95d7b05c8406b3285",
+                "url": "https://api.github.com/repos/IcecaveStudios/skew-schema/zipball/bb12e133a7a5c3366ecab663255743d934dca985",
+                "reference": "bb12e133a7a5c3366ecab663255743d934dca985",
                 "shasum": ""
             },
             "require-dev": {
-                "eloquent/schemer": "~0.2",
-                "icecave/archer": "~0.4"
+                "eloquent/schemer": "~0.2.0",
+                "icecave/archer": "~1"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -1233,12 +1236,13 @@
                 },
                 {
                     "name": "Kevin Millar",
-                    "email": "koden.km@gmail.com"
+                    "email": "koden.km@gmail.com",
+                    "homepage": "https://github.com/koden-km"
                 }
             ],
             "description": "JSON schema for Skew messages.",
             "homepage": "https://github.com/IcecaveStudios/skew-schema",
-            "time": "2013-06-25 00:47:49"
+            "time": "2013-10-03 06:04:56"
         },
         {
             "name": "nikic/php-parser",
@@ -1539,7 +1543,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Config",
             "source": {
                 "type": "git",
@@ -1587,7 +1591,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
@@ -1640,7 +1644,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
@@ -1694,7 +1698,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
@@ -1741,7 +1745,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
@@ -1835,7 +1839,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Stopwatch",
             "source": {
                 "type": "git",
@@ -1882,7 +1886,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
@@ -1929,16 +1933,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.13.2",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755"
+                "reference": "224fc55635d544a2ec8edb3592be18db5a093f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/6d6a1009427d1f398c9d40904147bf9f723d5755",
-                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/224fc55635d544a2ec8edb3592be18db5a093f59",
+                "reference": "224fc55635d544a2ec8edb3592be18db5a093f59",
                 "shasum": ""
             },
             "require": {
@@ -1947,7 +1951,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -1974,7 +1978,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-08-03 15:35:31"
+            "time": "2013-10-03 06:41:20"
         }
     ],
     "aliases": [

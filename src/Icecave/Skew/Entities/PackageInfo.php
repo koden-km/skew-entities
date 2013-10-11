@@ -1,5 +1,5 @@
 <?php
-namespace Icecave\Temptation;
+namespace Icecave\Skew\Entities;
 
 class PackageInfo
 {

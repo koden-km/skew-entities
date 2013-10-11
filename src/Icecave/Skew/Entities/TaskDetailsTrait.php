@@ -76,7 +76,7 @@ trait TaskDetailsTrait
     {
         $t = $this->tags();
         $t->clear();
-        $t->unionInPlace($tags);
+        $t->addMany($tags);
     }
 
     private $priority;
