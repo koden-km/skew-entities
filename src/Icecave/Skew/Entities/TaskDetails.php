@@ -9,7 +9,7 @@ class TaskDetails implements TaskDetailsInterface
     use TaskDetailsTrait;
 
     /**
-     * @param string $task The task name to execute.
+     * @param string $task The name of the task to be executed.
      */
     public function __construct($task)
     {
@@ -19,6 +19,8 @@ class TaskDetails implements TaskDetailsInterface
     }
 
     /**
+     * Construct a task details object from a job request.
+     *
      * @param JobRequestMessage $request A job request message describing the job to create.
      *
      * @return TaskDetails
@@ -28,6 +30,7 @@ class TaskDetails implements TaskDetailsInterface
         TypeCheck::get(__CLASS__)->fromRequest(func_get_args());
 
         $taskDetails = new static($request->task());
+        // $taskDetails->copyTaskDetails($request);
         $taskDetails->setPriority($request->priority());
         $taskDetails->setPayload($request->payload());
         $taskDetails->setTags($request->tags());

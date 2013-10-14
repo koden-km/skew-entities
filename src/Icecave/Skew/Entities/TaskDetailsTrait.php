@@ -6,7 +6,9 @@ use Icecave\Collections\Set;
 trait TaskDetailsTrait
 {
     /**
-     * @return string The task name to execute.
+     * Fetch the name of the task to be executed.
+     *
+     * @return string The name of the task to be executed.
      */
     public function task()
     {
@@ -14,7 +16,9 @@ trait TaskDetailsTrait
     }
 
     /**
-     * @param string $task The task name to execute.
+     * Set the name of the task to be executed.
+     *
+     * @param string $task The name of the task to be executed.
      */
     public function setTask($task)
     {
@@ -22,6 +26,8 @@ trait TaskDetailsTrait
     }
 
     /**
+     * Fetch the task priority.
+     *
      * @return Priority The task priority.
      */
     public function priority()
@@ -34,6 +40,8 @@ trait TaskDetailsTrait
     }
 
     /**
+     * Set the task priority.
+     *
      * @param Priority $priority The task priority.
      */
     public function setPriority(Priority $priority)
@@ -42,7 +50,11 @@ trait TaskDetailsTrait
     }
 
     /**
-     * @return mixed The payload to send to the task.
+     * Fetch the task payload.
+     *
+     * The payload is an opaque data structure passed to the task handler upon execution.
+     *
+     * @return mixed The task payload.
      */
     public function payload()
     {
@@ -50,7 +62,11 @@ trait TaskDetailsTrait
     }
 
     /**
-     * @param mixed $payload The payload to send to the task.
+     * Set the task payload.
+     *
+     * The payload is an opaque data structure passed to the task handler upon execution.
+     *
+     * @param mixed $payload The task payload.
      */
     public function setPayload($payload)
     {
@@ -58,7 +74,11 @@ trait TaskDetailsTrait
     }
 
     /**
-     * @return Set<string> Arbitrary string tags.
+     * Fetch the task tags.
+     *
+     * Tags are arbitrary strings recorded against jobs that can be used to tracking or statistical aggregation.
+     *
+     * @return Set<string> The task tags.
      */
     public function tags()
     {
@@ -70,6 +90,10 @@ trait TaskDetailsTrait
     }
 
     /**
+     * Set the task tags.
+     *
+     * Tags are arbitrary strings recorded against jobs that can be used to tracking or statistical aggregation.
+     *
      * @param mixed<string> $tags Arbitrary string tags.
      */
     public function setTags($tags)
@@ -77,6 +101,19 @@ trait TaskDetailsTrait
         $t = $this->tags();
         $t->clear();
         $t->addMany($tags);
+    }
+
+    /**
+     * Copy the elements from another set of task details.
+     *
+     * @param TaskDetailsInterface $taskDetails The task details to copy.
+     */
+    public function copyTaskDetails(TaskDetailsInterface $taskDetails)
+    {
+        $this->setTask($taskDetails->task());
+        $this->setPriority($taskDetails->priority());
+        $this->setPayload($taskDetails->payload());
+        $this->setTags($taskDetails->tags());
     }
 
     private $priority;

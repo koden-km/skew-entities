@@ -43,7 +43,7 @@ class DecoderTest extends PHPUnit_Framework_TestCase
 
     public function testDecodeFailureMissingType()
     {
-        $this->setExpectedException('ErrorException', 'Undefined property: stdClass::$type');
+        $this->setExpectedException('Exception', 'Undefined property: stdClass::$type');
         $this->decoder->decode(new stdClass);
     }
 

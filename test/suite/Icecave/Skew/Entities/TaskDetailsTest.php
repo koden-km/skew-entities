@@ -69,4 +69,24 @@ class TaskDetailsTest extends PHPUnit_Framework_TestCase
         $this->taskDetails->setPayload($payload);
         $this->assertSame($payload, $this->taskDetails->payload());
     }
+
+    /**
+     * @covers Icecave\Skew\Entities\TaskDetailsTrait
+     */
+    public function testCopyTaskDetails()
+    {
+        $payload = new stdClass;
+
+        $this->taskDetails->setPriority(Priority::HIGH());
+        $this->taskDetails->setPayload($payload);
+        $this->taskDetails->setTags(['tag1', 'tag2']);
+
+        $taskDetails = new TaskDetails('foo');
+        $taskDetails->copyTaskDetails($this->taskDetails);
+
+        $this->assertSame('skew.test', $taskDetails->task());
+        $this->assertSame(Priority::HIGH(), $taskDetails->priority());
+        $this->assertSame($payload, $taskDetails->payload());
+        $this->assertEquals(new Set(['tag1', 'tag2']), $taskDetails->tags());
+    }
 }

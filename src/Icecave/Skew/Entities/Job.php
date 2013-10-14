@@ -8,7 +8,7 @@ class Job implements JobInterface
 {
     /**
      * @param string               $id          The job ID.
-     * @param TaskDetailsInterface $taskDetails
+     * @param TaskDetailsInterface $taskDetails The job's task details.
      */
     public function __construct($id, TaskDetailsInterface $taskDetails)
     {
@@ -19,6 +19,8 @@ class Job implements JobInterface
     }
 
     /**
+     * Create a job from a job request.
+     *
      * @param JobRequestMessage $request A job request message describing the job to create.
      *
      * @return Job
@@ -34,7 +36,9 @@ class Job implements JobInterface
     }
 
     /**
-     * @return string
+     * Fetch the ID of the job.
+     *
+     * @return string The ID of the job.
      */
     public function id()
     {
@@ -44,7 +48,9 @@ class Job implements JobInterface
     }
 
     /**
-     * @param string $id The job ID.
+     * Set the ID of the job.
+     *
+     * @param string $id The ID of the job.
      */
     public function setId($id)
     {
@@ -54,7 +60,9 @@ class Job implements JobInterface
     }
 
     /**
-     * @return TaskDetailsInterface
+     * Fetch the task details for the job.
+     *
+     * @return TaskDetailsInterface The job's task details.
      */
     public function taskDetails()
     {
@@ -64,7 +72,9 @@ class Job implements JobInterface
     }
 
     /**
-     * @param TaskDetailsInterface $taskDetails
+     * Set the job's task details.
+     *
+     * @param TaskDetailsInterface $taskDetails The job's task details.
      */
     public function setTaskDetails(TaskDetailsInterface $taskDetails)
     {

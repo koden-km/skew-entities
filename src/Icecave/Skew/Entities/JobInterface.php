@@ -4,12 +4,16 @@ namespace Icecave\Skew\Entities;
 interface JobInterface
 {
     /**
-     * @return string
+     * Fetch the ID of the job.
+     *
+     * @return string The ID of the job.
      */
     public function id();
 
     /**
-     * @return TaskDetailsInterface
+     * Fetch the task details for the job.
+     *
+     * @return TaskDetailsInterface The job's task details.
      */
     public function taskDetails();
 }
